@@ -8,7 +8,7 @@ open Endorphin.Core
 module FieldTarget =
 
     /// Defines the parameters for a target magnetic field.
-    type FieldTargetParameers =
+    type FieldTargetParameters =
         private { TargetStepIndex  : uint16
                   CurrentDirection : CurrentDirection
                   RampRateIndex    : int }
@@ -30,7 +30,7 @@ module FieldTarget =
     /// Defines a magnetic field target which is associated with a magnet controller. This is
     /// created after the connection to the magnet controller has been established.
     type FieldTarget =
-        private { Parameters       : FieldTargetParameers
+        private { Parameters       : FieldTargetParameters
                   MagnetController : MagnetController
                   StatusChanged    : NotificationEvent<FieldTargetStatus> }
 
