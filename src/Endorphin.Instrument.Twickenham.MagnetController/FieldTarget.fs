@@ -1,18 +1,17 @@
 // Copyright (c) University of Warwick. All Rights Reserved. Licensed under the Apache License, Version 2.0. See LICENSE.txt in the project root for license information.
 
-namespace Endorphin.Instrument.TwickenhamSmc
+namespace Endorphin.Instrument.Twickenham.MagnetController
 
 open Endorphin.Core
 
 /// Functions related to ramping a magnet controller to a specified field target.
 module FieldTarget =
-
     /// Defines the parameters for a target magnetic field.
     type FieldTargetParameters =
         private { TargetStepIndex  : uint16
                   CurrentDirection : CurrentDirection
                   RampRateIndex    : int }
-       
+
     /// Indicates progress as a magnet controller ramps towards a target magnetic field.
     type FieldTargetStatus =
         | PreparingTarget
@@ -26,7 +25,7 @@ module FieldTarget =
         | TargetReached
         | TargetError of exn
         | TargetCancelled
-    
+
     /// Defines a magnetic field target which is associated with a magnet controller. This is
     /// created after the connection to the magnet controller has been established.
     type FieldTarget =
@@ -39,7 +38,7 @@ module FieldTarget =
     type FieldTargetHandle =
         private { FieldTarget : FieldTarget
                   WaitHandle  : Async<FieldTargetResult> }
-    
+
     /// Functions for specifying magnetic field target parameters.
     module Parameters =
 
@@ -52,7 +51,7 @@ module FieldTarget =
         /// Returns modified magnetic field target parameters with the specified ramp rate index.
         let withRampRateIndex rampRateIndex parameters =
             { parameters with RampRateIndex = rampRateIndex }
-            
+
         /// Returns the current direction of the given magnetic field target parameters.
         let currentDirection parameters = parameters.CurrentDirection
 
@@ -64,12 +63,12 @@ module FieldTarget =
         let field magnetController parameters =
             (currentDirection parameters, stepIndex parameters)
             |> MagnetController.Output.MagneticField.fromStepIndex magnetController
-           
+
         /// Returns the output current corresponding to the field target parameters on the given
-        /// magnet controller.    
+        /// magnet controller.
         let current magnetController =
             stepIndex >> MagnetController.Output.Current.fromStepIndex magnetController
-        
+
         /// Returns the monitoring shunt voltage readout corresponding to the field target
         /// parameters on the given magnet controller.
         let shuntVoltage magnetController =
@@ -77,12 +76,12 @@ module FieldTarget =
 
         /// Returns the ramp rate index corresponding to the magnetic field target parameters.
         let rampRateIndex parameters = parameters.RampRateIndex
-        
+
         /// Returns the ramp rate corresponding to the magnetic field target parameters on the
         /// given magnet controller.
         let rampRate magnetController =
             rampRateIndex >> MagnetController.Ramp.Rate.fromIndex magnetController
-    
+
     /// Creates a magnetic field target for the given magnet controller with the specified
     /// parameters.
     let create magnetController parameters =
@@ -100,16 +99,16 @@ module FieldTarget =
     let private prepare target = async {
         target.StatusChanged.Trigger (Next <| PreparingTarget)
         let magnetController = target.MagnetController
-        
+
         // first pause the magnet controller so that the settings can be set without causing the field to ramp
         do! MagnetController.Ramp.setPause magnetController true
         do! MagnetController.Ramp.Rate.setByIndex magnetController (target.Parameters |> Parameters.rampRateIndex)
-             
+
         // set the lower set point to the minimum value so it is not lower than the upper set point value, which would
         // prevent the upper set point from being set
         do! MagnetController.Output.Current.setLowerSetPointIndex magnetController 0us
         do! MagnetController.Output.Current.setUpperSetPointIndex magnetController (target.Parameters |> Parameters.stepIndex) }
-    
+
     /// Proceeds to the magnetic field target once the magnet controller settings are prepared.
     let private proceedToTarget target = async {
         target.StatusChanged.Trigger (Next <| RampingToTarget)
@@ -120,14 +119,14 @@ module FieldTarget =
         if (target.Parameters |> Parameters.currentDirection) <> operatingParameters.CurrentDirection then
             do! MagnetController.Ramp.setTarget magnetController Zero
             do! MagnetController.Ramp.setPause magnetController false
-            do! MagnetController.Ramp.waitToReachZero magnetController 
+            do! MagnetController.Ramp.waitToReachZero magnetController
             do! MagnetController.Output.setDirection magnetController (target.Parameters |> Parameters.currentDirection)
-        
+
         // set the ramp target, unpause and wait to reach it
         do! MagnetController.Ramp.setTarget magnetController Upper
         do! MagnetController.Ramp.setPause magnetController false
-        do! MagnetController.Ramp.waitToReachTarget magnetController } 
-    
+        do! MagnetController.Ramp.waitToReachTarget magnetController }
+
     /// Ramps to the specified magnetic field target, leaving the magnet controller in a paused
     /// state if cancellation occurs.
     let private goToTarget target = async {
@@ -137,7 +136,7 @@ module FieldTarget =
 
     /// Ramps to a magnetic field target with the given cancellation token. If the token is
     /// cancelled, then the ramp will be aborted and the magnet controller will be left in a
-    /// paused state. To ensure that the ramp is stopped cleanly, no other cancellation 
+    /// paused state. To ensure that the ramp is stopped cleanly, no other cancellation
     /// compensations should be registered with this cancellation token which will post commands
     /// to the magnet controlller. Returns a handle which can be used to wait for the target to
     /// be reached asynchronously.

@@ -1,0 +1,28 @@
+﻿type project
+title
+    Endorphin.Instrument.Twickenham.MagnetController
+owners
+    University of Warwick EPR and Diamond group
+authors 
+    University of Warwick EPR and Diamond group
+projectUrl
+    http://github.com/WarwickEPR/Endorphin.Instrument.Twickenham.MagnetController
+iconUrl
+    https://raw.githubusercontent.com/WarwickEPR/Endorphin.Instrument.Twickenham.MagnetController/master/docs/files/img/logo.png
+licenseUrl
+    http://github.com/WarwickEPR/Endorphin.Instrument.Twickenham.MagnetController/blob/master/LICENSE.txt
+requireLicenseAcceptance
+    false
+copyright
+    Copyright 2015
+tags
+    fsharp science
+summary
+    F# wrapper for the Twickenham Scientific Instruments Superconducting Magnet
+    Controller
+description
+    F# wrapper for the Twickenham Scientific Instruments Superconducting Magnet
+    Controller using the Endorphin.Core framework and the National Instruments
+    VISA API.
+dependencies
+	Endorphin.Instrument.Twickenham.MagnetController ~> CURRENTVERSION

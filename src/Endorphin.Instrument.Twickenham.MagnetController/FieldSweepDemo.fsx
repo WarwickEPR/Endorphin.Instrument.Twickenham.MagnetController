@@ -1,14 +1,15 @@
 // Copyright (c) University of Warwick. All Rights Reserved. Licensed under the Apache License, Version 2.0. See LICENSE.txt in the project root for license information.
 
-#r "../Endorphin.Core/bin/Debug/Endorphin.Core.dll"
-#r "../Endorphin.Utilities/bin/Debug/Endorphin.Utilities.dll"
-#r "bin/Debug/Endorphin.Instrument.TwickenhamSmc.dll"
-#r "../packages/log4net.2.0.3/lib/net40-full/log4net.dll"
+#I "../../packages"
+
+#r "Endorphin.Core/lib/net40/Endorphin.Core.dll"
+#r "../../bin/Debug/Endorphin.Instrument.Twickenham.MagnetController.dll"
+#r "log4net/lib/net45-full/log4net.dll"
 
 open System
 open Microsoft.FSharp.Data.UnitSystems.SI.UnitSymbols
 
-open Endorphin.Instrument.TwickenhamSmc
+open Endorphin.Instrument.Twickenham.MagnetController
 
 log4net.Config.BasicConfigurator.Configure()
 
@@ -47,20 +48,22 @@ async {
     let! magnetController = MagnetController.openInstrument "GPIB0::4" 3000<ms> settings
 
     try
-        let targetParameters =
-            FieldTarget.Parameters.create Forward
-            <| MagnetController.Output.Current.toStepIndex magnetController 1.5M<A>
-            <| MagnetController.Ramp.Rate.nearestIndex magnetController 0.02M<A/s>
+        let sweepParameters =
+            FieldSweep.Parameters.create Forward
+            <| MagnetController.Output.Current.toStepIndex magnetController 0.5M<A>
+            <| MagnetController.Output.Current.toStepIndex magnetController 0.9M<A>
+            <| MagnetController.Ramp.Rate.nearestIndex magnetController 0.05M<A/s>
 
-        let target = FieldTarget.create magnetController targetParameters
+        let sweep = FieldSweep.create magnetController sweepParameters
 
-        FieldTarget.status target |> Observable.add (printfn "%A")
+        FieldSweep.status sweep |> Observable.add (printfn "%A")
 
-        let cts = new System.Threading.CancellationTokenSource (10000) // replace with, e.g. (10000) to cancel after 10000 ms.
-        let targetHandle = FieldTarget.goWithCancellationToken target cts.Token
+        let cts = new System.Threading.CancellationTokenSource () // replace with, e.g. (10000) to cancel after 10000 ms
+        let sweepHandle = FieldSweep.prepareWithCancellationToken sweep cts.Token
 
-        let! result = FieldTarget.waitToFinish targetHandle
-        printfn "Magnetic field target finished with result: %A" result
+        FieldSweep.setReadyToSweep sweep
+        let! result = FieldSweep.waitToFinish sweepHandle
+        printfn "Magnetic field sweep finished with result: %A" result
 
     finally
         MagnetController.closeInstrument magnetController |> Async.StartImmediate }

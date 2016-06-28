@@ -1,21 +1,19 @@
 // Copyright (c) University of Warwick. All Rights Reserved. Licensed under the Apache License, Version 2.0. See LICENSE.txt in the project root for license information.
 
-namespace Endorphin.Instrument.TwickenhamSmc
+namespace Endorphin.Instrument.Twickenham.MagnetController
 
 open Microsoft.FSharp.Data.UnitSystems.SI.UnitSymbols
-
 open FSharp.Text.RegexProvider
 
 [<AutoOpen>]
 /// Internal parsing functions between model types and their corresponding VISA command
 /// string formats.
 module internal Parsing =
-
     /// Encode a voltage in volts as a string.
     let voltageString (voltage : decimal<V>) = sprintf "%04.1f" voltage
 
     /// Encode a current in amps as a string.
-    let currentString (current : decimal<A>) = 
+    let currentString (current : decimal<A>) =
         // devices with lower output current require a string with 4 digits after the decimal point
         // to access the maximum available resolution while those with higher output currents require
         // a string with 3 digits before the decimal point to access the maximum output current
@@ -103,7 +101,7 @@ module internal Parsing =
     let parseSetPointParameters str =
         let setPointParametersMatch = SetPointParametersRegex().Match(str)
         if setPointParametersMatch.Success then
-            { LowerSetPoint = 1.0M<A> * decimal setPointParametersMatch.LowerSetPoint.Value 
+            { LowerSetPoint = 1.0M<A> * decimal setPointParametersMatch.LowerSetPoint.Value
               UpperSetPoint = 1.0M<A> * decimal setPointParametersMatch.UpperSetPoint.Value
               TripVoltage   = 1.0M<V> * decimal setPointParametersMatch.TripVoltage.Value }
         else failwithf "Unexpected magnet controller set point parameter string: %s." str

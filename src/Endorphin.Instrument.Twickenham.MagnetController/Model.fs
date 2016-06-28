@@ -1,6 +1,6 @@
 // Copyright (c) University of Warwick. All Rights Reserved. Licensed under the Apache License, Version 2.0. See LICENSE.txt in the project root for license information.
 
-namespace Endorphin.Instrument.TwickenhamSmc
+namespace Endorphin.Instrument.Twickenham.MagnetController
 
 open Endorphin.Core
 open System
@@ -9,7 +9,6 @@ open Microsoft.FSharp.Data.UnitSystems.SI.UnitSymbols
 [<AutoOpen>]
 /// Twickenham superconducting magnet controller model types.
 module Model =
-   
     module TwickenhamSmc =
         /// Parameters specifying the magnet controller hardware configuratoin.
         type HardwareParameters =
@@ -24,7 +23,7 @@ module Model =
 
         /// Calibration parameters for the magnetic field.
         type FieldCalibration =
-            { StaticField       : decimal<T> 
+            { StaticField       : decimal<T>
               LinearCoefficient : decimal<T/A> }
 
         /// Calibration parameters for the output monitoring shunt.
@@ -32,7 +31,7 @@ module Model =
             { VoltageOffset     : decimal<V>
               LinearCoefficient : decimal<V/A>
               RmsVoltageNoise   : decimal<V> }
-   
+
         /// Magnet controller settings including hardware configuration, output limits and calibration parameters.
         type Settings =
             { HardwareParameters : HardwareParameters
@@ -51,24 +50,24 @@ module Model =
     type RampTarget = Zero | Lower | Upper
 
     /// Magnet controller output parameters.
-    type OutputParameters = 
+    type OutputParameters =
         { OutputCurrent : decimal<A>
           OutputVoltage : decimal<V>
           RampTarget    : RampTarget }
 
     /// Magnet controller current parameters.
-    type CurrentParameters = 
+    type CurrentParameters =
         { RampTarget    : RampTarget
           ReachedTarget : bool
           IsPaused      : bool }
-    
+
     /// Magnet controller operating parameters.
-    type OperatingParameters = 
+    type OperatingParameters =
         { RampRate         : decimal<A/s>
           CurrentDirection : CurrentDirection }
 
     /// Magnet controller set point parameters.
-    type SetPointParameters = 
+    type SetPointParameters =
         { LowerSetPoint : decimal<A>
           UpperSetPoint : decimal<A>
           TripVoltage   : decimal<V> }

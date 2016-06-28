@@ -1,0 +1,7 @@
+﻿FSharp.Core
+FSharp.Text.RegexProvider
+FSharp.Control.Reactive
+Endorphin.Core.NationalInstruments
+
+File:Control.fs
+File:Reactive.fs

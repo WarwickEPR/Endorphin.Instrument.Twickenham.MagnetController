@@ -1,18 +1,17 @@
 // Copyright (c) University of Warwick. All Rights Reserved. Licensed under the Apache License, Version 2.0. See LICENSE.txt in the project root for license information.
 
-namespace Endorphin.Instrument.TwickenhamSmc
+namespace Endorphin.Instrument.Twickenham.MagnetController
 
 open Endorphin.Core
 
 /// Internal functions for workflows which set and query model values to and from the instrument.
 module internal IO =
-
     /// Performs a query for the value corresponding to the given key and parses it with the given
     /// parsing function.
     let private queryValue parseFunc key (MagnetController (magnetController, _)) = async {
         let! response = (sprintf "%s\r\n" key) |> Visa.String.queryAsync magnetController
         return parseFunc response }
-    
+
     /// Sets the value corresponding to the given key to the instrument after converting it to a
     /// string with the provided string conversion function.
     let private setValue stringFunc key (MagnetController (magnetController, _)) value = async {

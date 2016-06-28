@@ -1,17 +1,16 @@
 // Copyright (c) University of Warwick. All Rights Reserved. Licensed under the Apache License, Version 2.0. See LICENSE.txt in the project root for license information.
 
-namespace Endorphin.Instrument.TwickenhamSmc
+namespace Endorphin.Instrument.Twickenham.MagnetController
 
 [<RequireQualifiedAccess>]
 /// VISA command keys for instrument.
 module internal Keys =
-    
     /// Device output parameters query key.
     let outputParameters = "G"
 
     /// Device current parameters query key.
     let currentParameters = "K"
-    
+
     /// Device operating parameters query key.
     let operatingParameters = "O"
 
