@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>FieldSweep - Endorphin.Core</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content="University of Warwick EPR and Diamond group"/>
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet"/>
+
+    <link type="text/css" rel="stylesheet" href="/Endorphin.Core/content/style.css" />
+    <script type="text/javascript" src="/Endorphin.Core/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://github.com/anton-pt/Endorphin.Core">github page</a></li>
+        </ul>
+        <h3 class="muted"><a href="/Endorphin.Core/index.html">Endorphin.Core</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+
+
+
+<h1>FieldSweep</h1>
+<p>
+  <span>Namespace: Endorphin.Instrument.Twickenham.MagnetController</span><br />
+</p>
+<div class="xmldoc">
+<p>Functions related to performing a magnetic field sweep over a specified range with the magnet
+controller.</p>
+
+</div>
+
+<!-- Render nested types and modules, if there are any -->
+  <h2>Nested types and modules</h2>
+  <div>
+      <table class="table table-bordered type-list">
+    <thead>
+      <tr><td>Type</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="type-name">
+            <a href="endorphin-instrument-twickenham-magnetcontroller-fieldsweep-fieldsweep.html">FieldSweep</a>
+          </td>
+          <td class="xmldoc"><p>Defines a magnetic field sweep which is associated with a magnet controller. This is
+created after the connection to the magnet controller has been established.</p>
+
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="endorphin-instrument-twickenham-magnetcontroller-fieldsweep-fieldsweephandle.html">FieldSweepHandle</a>
+          </td>
+          <td class="xmldoc"><p>Represents a handle to a magnetic field sweep which is currently being performed by a
+magnet controller. This can be used to wait for the field sweep to complete.</p>
+
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="endorphin-instrument-twickenham-magnetcontroller-fieldsweep-fieldsweepparameters.html">FieldSweepParameters</a>
+          </td>
+          <td class="xmldoc"><p>Defines the parameters for a magnetic field sweep.</p>
+
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="endorphin-instrument-twickenham-magnetcontroller-fieldsweep-fieldsweepresult.html">FieldSweepResult</a>
+          </td>
+          <td class="xmldoc"><p>Contains the result of a magnetic field sweep, indicating whether the it was completed
+successfully, failed or cancelled.</p>
+
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="endorphin-instrument-twickenham-magnetcontroller-fieldsweep-fieldsweepstatus.html">FieldSweepStatus</a>
+          </td>
+          <td class="xmldoc"><p>Indicates progress as a magnet controller performs a magnetic field sweep.</p>
+
+</td>
+        </tr>
+    </tbody>
+  </table>
+  <table class="table table-bordered module-list">
+    <thead>
+      <tr><td>Module</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="module-name">
+            <a href="endorphin-instrument-twickenham-magnetcontroller-fieldsweep-parameters.html">Parameters</a>
+          </td>
+          <td class="xmldoc"><p>Functions for specifying magnetic field sweep parameters.</p>
+
+</td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+  <h3>Functions and values</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Function or value</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '16', 16)" onmouseover="showTip(event, '16', 16)">
+            create magnetController parameters
+          </code>
+          <div class="tip" id="16">
+            <strong>Signature:</strong> magnetController:MagnetController -&gt; parameters:FieldSweepParameters -&gt; FieldSweep<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/anton-pt/Endorphin.Core/tree/master/src/Endorphin.Instrument.Twickenham.MagnetController/FieldSweep.fs#L168-168" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Creates a magnetic field sweep for the given magnet controller with the specified
+parameters.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '17', 17)" onmouseover="showTip(event, '17', 17)">
+            parameters sweep
+          </code>
+          <div class="tip" id="17">
+            <strong>Signature:</strong> sweep:FieldSweep -&gt; FieldSweepParameters<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/anton-pt/Endorphin.Core/tree/master/src/Endorphin.Instrument.Twickenham.MagnetController/FieldSweep.fs#L175-175" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Returns the parameters for a field sweep.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '18', 18)" onmouseover="showTip(event, '18', 18)">
+            prepare sweep
+          </code>
+          <div class="tip" id="18">
+            <strong>Signature:</strong> sweep:FieldSweep -&gt; FieldSweepHandle<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/anton-pt/Endorphin.Core/tree/master/src/Endorphin.Instrument.Twickenham.MagnetController/FieldSweep.fs#L276-276" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Performs a magnetic field sweep with the default cancellation token. The ready-to-start flag has
+to be set before the sweep will proceed to the final ramp target once prepared. If the ability to
+abort the sweep with a cancellation token is required then use prepareWithCancellationToken
+instead. Returns a handle which can be used to wait for the sweep to be completed asynchronously.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '19', 19)" onmouseover="showTip(event, '19', 19)">
+            prepareAsChild sweep
+          </code>
+          <div class="tip" id="19">
+            <strong>Signature:</strong> sweep:FieldSweep -&gt; Async&lt;FieldSweepHandle&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/anton-pt/Endorphin.Core/tree/master/src/Endorphin.Instrument.Twickenham.MagnetController/FieldSweep.fs#L286-286" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Performs a magnetic field sweep as a child (sharing the same cancellation token) to the current
+asynchronous workflow. The ready-to-start flag has  to be set before the sweep will proceed to the
+final ramp target once prepared. If the token is cancelled, then the sweep will be aborted and the
+magnet controller will be left in a paused state. To ensure that the sweep is stopped cleanly, no
+other cancellation compensations should be registered with this cancellation token which will post
+commands to the magnet controlller. Returns a handle which can be used to wait for the sweep to be
+completed asynchronously.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '20', 20)" onmouseover="showTip(event, '20', 20)">
+            prepareWithCancellationToken (...)
+          </code>
+          <div class="tip" id="20">
+            <strong>Signature:</strong> sweep:FieldSweep -&gt; cancellationToken:CancellationToken -&gt; FieldSweepHandle<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/anton-pt/Endorphin.Core/tree/master/src/Endorphin.Instrument.Twickenham.MagnetController/FieldSweep.fs#L251-251" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Prepares a magnetic field sweep with the given cancellation token. The ready-to-start
+flag has to be set before the sweep will proceed to the final ramp target once prepared.
+If the token is cancelled, then the sweep will be aborted and the magnet controller will
+be left in a paused state. To ensure that the sweep is stopped cleanly, no othercancellation
+compensations should be registered with this cancellation token which will post commands
+to the magnet controlller. Returns a handle which can be used to wait for the sweep to
+be completed asynchronously.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '21', 21)" onmouseover="showTip(event, '21', 21)">
+            setReadyToSweep sweep
+          </code>
+          <div class="tip" id="21">
+            <strong>Signature:</strong> sweep:FieldSweep -&gt; unit<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/anton-pt/Endorphin.Core/tree/master/src/Endorphin.Instrument.Twickenham.MagnetController/FieldSweep.fs#L292-292" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Sets the ready-to-sweep flag on the magnetic field sweep so that it will proceed to the
+final ramp target once prepared.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '22', 22)" onmouseover="showTip(event, '22', 22)">
+            status sweep
+          </code>
+          <div class="tip" id="22">
+            <strong>Signature:</strong> sweep:FieldSweep -&gt; IObservable&lt;FieldSweepStatus&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/anton-pt/Endorphin.Core/tree/master/src/Endorphin.Instrument.Twickenham.MagnetController/FieldSweep.fs#L178-178" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Returns an observable which fires when the magnetic field sweep status changes.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '23', 23)" onmouseover="showTip(event, '23', 23)">
+            waitToFinish sweepHandle
+          </code>
+          <div class="tip" id="23">
+            <strong>Signature:</strong> sweepHandle:FieldSweepHandle -&gt; Async&lt;FieldSweepResult&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/anton-pt/Endorphin.Core/tree/master/src/Endorphin.Instrument.Twickenham.MagnetController/FieldSweep.fs#L297-297" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Asynchronously waits for the magnetic field sweep workflow associated with the handle to
+complete with success, failure or cancellation.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '24', 24)" onmouseover="showTip(event, '24', 24)">
+            waitToPrepare sweep
+          </code>
+          <div class="tip" id="24">
+            <strong>Signature:</strong> sweep:FieldSweep -&gt; Async&lt;unit&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/anton-pt/Endorphin.Core/tree/master/src/Endorphin.Instrument.Twickenham.MagnetController/FieldSweep.fs#L300-300" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Asynchronously waits for the magnetic field sweep to be prepared at the initial field.</p>
+
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+        </div>
+        <div class="span3">
+          <img src="/Endorphin.Core/img/logo.png" alt="F# Project" style="width:150px;margin:10px" />  
+          <ul class="nav nav-list" id="menu" style="margin-top: 20px;">
+            <li class="nav-header">Endorphin.Core</li>
+            <li><a href="/Endorphin.Core/index.html">Home page</a></li>
+            <li class="divider"></li>
+            <li><a href="http://nuget.org/packages/Endorphin.Core">Get Library via NuGet</a></li>
+            <li><a href="http://github.com/anton-pt/Endorphin.Core">Source Code on GitHub</a></li>
+            <li><a href="/Endorphin.Core/license.html">License</a></li>
+            <li><a href="/Endorphin.Core/release-notes.html">Release Notes</a></li>
+            
+            <li class="nav-header">Getting started</li>
+            <li><a href="/Endorphin.Core/tutorial.html">Sample tutorial</a></li>
+
+            <li class="nav-header">Documentation</li>
+            <li><a href="/Endorphin.Core/reference/index.html">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="http://github.com/anton-pt/Endorphin.Core"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"/></a>
+  </body>
+  </html>
