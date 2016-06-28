@@ -5,8 +5,8 @@ nuget Endorphin.Core.NationalInstruments
 nuget FSharp.Text.RegexProvider ~> 0.0.7
 nuget FSharp.Control.Reactive ~> 3.4.1
 
-github WarwickEPR/Endorphin.Core src/Control.fs
-github WarwickEPR/Endorphin.Core src/Reactive.fs
+github WarwickEPR/Endorphin.Core src/Endorphin.Core.Control.fs
+github WarwickEPR/Endorphin.Core src/Endorphin.Core.Reactive.fs
 
 group Build
     source https://nuget.org/api/v2

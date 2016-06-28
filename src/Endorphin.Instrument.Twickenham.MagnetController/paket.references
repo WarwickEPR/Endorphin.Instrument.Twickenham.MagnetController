@@ -3,5 +3,5 @@ FSharp.Text.RegexProvider
 FSharp.Control.Reactive
 Endorphin.Core.NationalInstruments
 
-File:Control.fs
-File:Reactive.fs
+File:Endorphin.Core.Control.fs
+File:Endorphin.Core.Reactive.fs

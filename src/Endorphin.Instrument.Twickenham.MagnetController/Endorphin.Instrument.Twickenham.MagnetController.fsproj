@@ -50,13 +50,13 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <Compile Include="..\..\paket-files\WarwickEPR\Endorphin.Core\src\Control.fs">
+    <Compile Include="..\..\paket-files\WarwickEPR\Endorphin.Core\src\Endorphin.Core.Control.fs">
       <Paket>True</Paket>
-      <Link>paket-files/Control.fs</Link>
+      <Link>paket-files/Endorphin.Core.Control.fs</Link>
     </Compile>
-    <Compile Include="..\..\paket-files\WarwickEPR\Endorphin.Core\src\Reactive.fs">
+    <Compile Include="..\..\paket-files\WarwickEPR\Endorphin.Core\src\Endorphin.Core.Reactive.fs">
       <Paket>True</Paket>
-      <Link>paket-files/Reactive.fs</Link>
+      <Link>paket-files/Endorphin.Core.Reactive.fs</Link>
     </Compile>
     <Compile Include="Model.fs" />
     <Compile Include="Parsing.fs" />

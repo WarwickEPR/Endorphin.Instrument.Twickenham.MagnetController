@@ -21,8 +21,8 @@ NUGET
       Rx-Interfaces (>= 2.2.5)
 GITHUB
   remote: WarwickEPR/Endorphin.Core
-    src/Control.fs (f65b5eb70fc917814e81bf89990ab82e9d3c6f1a)
-    src/Reactive.fs (f65b5eb70fc917814e81bf89990ab82e9d3c6f1a)
+    src/Endorphin.Core.Control.fs (dcb318721dfcabd3595e5fa35690bbc020f6f957)
+    src/Endorphin.Core.Reactive.fs (dcb318721dfcabd3595e5fa35690bbc020f6f957)
 GROUP Build
 NUGET
   remote: https://www.nuget.org/api/v2
