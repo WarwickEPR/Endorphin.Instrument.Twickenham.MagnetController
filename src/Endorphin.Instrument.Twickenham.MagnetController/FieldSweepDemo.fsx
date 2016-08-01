@@ -2,8 +2,8 @@
 
 #I "../../packages"
 
-#r "Endorphin.Core/lib/net40/Endorphin.Core.dll"
-#r "../../bin/Debug/Endorphin.Instrument.Twickenham.MagnetController.dll"
+#r "Endorphin.Core/lib/net452/Endorphin.Core.dll"
+#r "bin/Debug/Endorphin.Instrument.Twickenham.MagnetController.dll"
 #r "log4net/lib/net45-full/log4net.dll"
 
 open System
