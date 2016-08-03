@@ -9,13 +9,13 @@ module internal IO =
     /// Performs a query for the value corresponding to the given key and parses it with the given
     /// parsing function.
     let private queryValue parseFunc key (MagnetController (magnetController, _)) = async {
-        let! response = (sprintf "%s\r\n" key) |> Visa.String.queryAsync magnetController
+        let! response = (sprintf "%s\r\n" key) |> Visa.String.query magnetController
         return parseFunc response }
 
     /// Sets the value corresponding to the given key to the instrument after converting it to a
     /// string with the provided string conversion function.
     let private setValue stringFunc key (MagnetController (magnetController, _)) value = async {
-        sprintf "%s%s\r\n" key (stringFunc value) |> Visa.String.writeAsync magnetController }
+        sprintf "%s%s\r\n" key (stringFunc value) |> Visa.String.write magnetController }
 
     /// Query magnet controller output parameters with the provided key.
     let queryOutputParameters = queryValue parseOutputParameters
