@@ -1,3 +1,6 @@
+#### 0.1.2 - 2016-08-03
+* Remove VISA async IO due to memory corruption bugs
+
 #### 0.1.1 - 2016-08-01
 * Fix unit-of-measure referencing issues in Endorphin.Core
 
