@@ -8,7 +8,7 @@ VISA APIs.
 
 Documentation:
 http://WarwickEPR.github.io/Endorphin.Instrument.Twickenham.MagnetController
-More documentation to follow...
+
 
 ## Maintainers
 
